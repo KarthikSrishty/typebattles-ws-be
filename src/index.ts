@@ -1,13 +1,8 @@
 import { WebSocket, WebSocketServer } from 'ws';
 import { UserManager } from './UserManager';
 import { IncomingMessage, SupportedMessage } from "./messages/incomingMessages";
-import { OutgoingMessage, SupportedMessage as OutgoingSupportedMessages } from "./messages/outgoingMessages";
-import { InMemoryStore } from "./store/InMemoryStore";
-import { GetAndNotifyMessageType } from './messages/incomingMessages';
-
-const wss = new WebSocketServer({ port: 8080 });
+const wss = new WebSocketServer({  port:  8080  });
 const userManager = new UserManager();
-const store = new InMemoryStore();
 
 wss.on('connection', function connection(ws: WebSocket) {
     console.log("New Client Connected! ", ws.toString());
