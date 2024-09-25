@@ -1,9 +1,7 @@
 import generateUniqueId from 'generate-unique-id';
-import { WebSocket } from "ws";
-import { OutgoingMessage, SupportedMessage as OutgoingSupportedMessages } from "./messages/outgoingMessages";
-import { ActiveItemType } from './messages/outgoingMessages';
 import data from './words/common.json';
 import { GetAndNotifyMessageType, AddRoomMessageType, InitMessageType } from "./messages/incomingMessages";
+
 const getId = () => {
     var id = generateUniqueId({
         length: 4,
@@ -12,6 +10,10 @@ const getId = () => {
     });
     return id.toUpperCase();
 }
+export type ActiveItemType = {
+    section: string;
+    text: string;
+  }
 type res = {
     id: string,
     name: string,

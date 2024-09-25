@@ -1,6 +1,9 @@
 
 import z from "zod";
-import { ActiveItemType } from "./outgoingMessages";
+export type ActiveItemType = {
+    section: string;
+    text: string;
+}
 export enum SupportedMessage {
     AddRoom = "ADD_ROOM",
     JoinRoom = "JOIN_ROOM",
@@ -12,7 +15,7 @@ export enum SupportedMessage {
     UpdateBattleInfo = "UPDATE_BATTLE_INFO",
     NewBattle = "NEW_BATTLE",
     GameConfig = "GAME_CONFIG",
-    QuitBattle="QUIT_BATTLE",
+    QuitBattle = "QUIT_BATTLE",
 }
 export type IncomingMessage = {
     type: SupportedMessage.AddRoom,
@@ -43,10 +46,10 @@ export type IncomingMessage = {
     payload: NewBattleMessageType
 } | {
     type: SupportedMessage.GameConfig,
-    payload: {roomId:string,gameConfig: ActiveItemType[]}
-}| {
+    payload: { roomId: string, gameConfig: ActiveItemType[] }
+} | {
     type: SupportedMessage.QuitBattle,
-    payload: {roomId:string,userId:string}
+    payload: { roomId: string, userId: string }
 };
 export const VerifyUserMessage = z.object({
     userId: z.string(),
