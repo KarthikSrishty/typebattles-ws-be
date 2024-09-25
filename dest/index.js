@@ -3,10 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ws_1 = require("ws");
 const UserManager_1 = require("./UserManager");
 const incomingMessages_1 = require("./messages/incomingMessages");
-const InMemoryStore_1 = require("./store/InMemoryStore");
 const wss = new ws_1.WebSocketServer({ port: 8080 });
 const userManager = new UserManager_1.UserManager();
-const store = new InMemoryStore_1.InMemoryStore();
+wss.on('listening', (ws) => {
+    ws.send('Namaste🙏🏻! Server is Listening On Port 8080');
+});
 wss.on('connection', function connection(ws) {
     console.log("New Client Connected! ", ws.toString());
     ws.send('Namaste From Server🙏🏻');

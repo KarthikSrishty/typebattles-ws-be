@@ -1,7 +1,7 @@
 import generateUniqueId from 'generate-unique-id';
 import data from './words/common.json';
 import { GetAndNotifyMessageType, AddRoomMessageType, InitMessageType } from "./messages/incomingMessages";
-
+import { WebSocket } from 'ws';
 const getId = () => {
     var id = generateUniqueId({
         length: 4,
